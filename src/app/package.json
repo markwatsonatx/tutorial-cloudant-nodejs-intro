@@ -1,0 +1,16 @@
+{
+  "name": "tutorial-cloudant-nodejs-intro",
+  "version": "0.0.1",
+  "description": "",
+  "author": "Mark Watson <markwatsonatx@gmail.com>",
+  "main": "server.js",
+  "scripts": {
+    "start": "npm install && nodemon -L server.js"
+  },
+  "dependencies": {
+    "cloudant": "^1.4.2",
+    "ejs": "^2.4.2",
+    "express": "^4.13.3",
+    "nodemon": "^1.9.2"
+  }
+}
