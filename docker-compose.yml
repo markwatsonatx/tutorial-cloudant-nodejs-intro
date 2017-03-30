@@ -1,14 +1,5 @@
 version: '2'
 services:
-  cloudant:
-    image: ibmcom/cloudant-developer
-    volumes:
-      - cloudant:/srv
-    ports:
-      - "30080:80"
-    hostname: cloudant
-    network_mode: bridge
-    privileged: true
   web:
     image: node:latest    
     volumes:
@@ -19,6 +10,19 @@ services:
       - "33000:3000"
     links:
       - cloudant
+    network_mode: bridge
+  cloudant:
+    image: ibmcom/cloudant-developer:latest
+    ports:
+      - "30080:80"
+    expose:
+      - "80"
+    volumes:
+      - cloudant:/srv
+    mem_limit: 256M
+    restart: always
+    hostname: cloudant
+    privileged: true
+    network_mode: bridge
 volumes:
   cloudant:
-    external: true

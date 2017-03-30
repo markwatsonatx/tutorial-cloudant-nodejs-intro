@@ -14,7 +14,15 @@ cloudant(config.cloudantUrl, function(err, cloudant) {
         console.log(err.message);
     }
     else {
-        console.log('Connection successful.');
+        cloudantConn.db.list(function(err, allDbs) {
+            if (err) {
+                console.log('Could not connect to cloudant.');
+                console.log(err.message);
+            }
+            else {
+                console.log('Connection successful; databases = %s', allDbs.join(', '));
+            }
+        });
     }
 });
 
