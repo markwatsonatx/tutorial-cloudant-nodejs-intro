@@ -1,9 +1,5 @@
 module.exports = {
-    cloudant: {
-        hostname: "db",
-        username: "admin",
-        password: "pass"
-    },
+    cloudantUrl: "http://admin:pass@cloudant",
     express: {
         port: 3000
     }

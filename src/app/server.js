@@ -7,8 +7,8 @@ var app = express();
 var cloudantConn;
 
 // connect to cloudant
-cloudant(config.cloudant, function(er, cloudant, reply) {
-    cloudantConn = conn;
+cloudant(config.cloudantUrl, function(err, cloudant) {
+    cloudantConn = cloudant;
     if (err) {
         console.log('Could not connect to cloudant.');
         console.log(err.message);

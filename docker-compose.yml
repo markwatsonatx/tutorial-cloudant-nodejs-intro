@@ -1,11 +1,13 @@
 version: '2'
 services:
-  db:
-    image: dcheese/cloudant-developer
+  cloudant:
+    image: ibmcom/cloudant-developer
     volumes:
       - cloudant:/srv
     ports:
       - "30080:80"
+    hostname: cloudant
+    network_mode: bridge
     privileged: true
   web:
     image: node:latest    
@@ -15,8 +17,8 @@ services:
     command: npm start
     ports:
       - "33000:3000"
-    depends_on:
-      - db
+    links:
+      - cloudant
 volumes:
   cloudant:
-    external: false
+    external: true
