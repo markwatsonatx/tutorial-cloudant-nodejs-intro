@@ -22,7 +22,7 @@ services:
     mem_limit: 256M
     restart: always
     hostname: cloudant
-    privileged: true
+    #privileged: true
     network_mode: bridge
 volumes:
   cloudant:
